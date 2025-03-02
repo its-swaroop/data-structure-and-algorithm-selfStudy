@@ -1,0 +1,96 @@
+**Doubly Linked List (DLL) - Interview Revision Notes**
+
+### **Concept Overview:**
+- A **Doubly Linked List (DLL)** is similar to a **Singly Linked List (SLL)** but has an extra pointer (`prev`) pointing to the previous node.
+- Each node contains three components:
+  1. `value`: Stores the data.
+  2. `next`: Points to the next node.
+  3. `prev`: Points to the previous node.
+
+### **Comparison: Singly vs. Doubly Linked List**
+| Feature  | Singly Linked List | Doubly Linked List |
+|----------|-------------------|-------------------|
+| Navigation | Forward only | Forward & Backward |
+| Memory Usage | Less (1 pointer per node) | More (2 pointers per node) |
+| Insertion/Deletion | Faster at head, slower at tail | More efficient in both directions |
+
+---
+
+### **Node Structure (Java)**
+```java
+class Node {
+    int value;
+    Node next;
+    Node prev; // Additional pointer for DLL
+
+    Node(int value) {
+        this.value = value;
+        this.next = null;
+        this.prev = null;
+    }
+}
+```
+
+### **DLL Class Constructor**
+```java
+class DoublyLinkedList {
+    Node head;
+    Node tail;
+    int length;
+
+    DoublyLinkedList(int value) {
+        Node newNode = new Node(value);
+        head = newNode;
+        tail = newNode;
+        length = 1;
+    }
+}
+```
+
+### **Key Points of DLL Constructor**
+1. **Initialize `head` and `tail`**: Both point to the first node created.
+2. **Set `length = 1`**: Since the DLL starts with a single node.
+3. **Each node has `prev` and `next` pointers**: Initially set to `null`.
+
+---
+
+### **Verifying DLL Initialization**
+```java
+public class Main {
+    public static void main(String[] args) {
+        DoublyLinkedList myDLL = new DoublyLinkedList(7);
+
+        System.out.println("Head: " + myDLL.head.value); // Output: 7
+        System.out.println("Tail: " + myDLL.tail.value); // Output: 7
+        System.out.println("Length: " + myDLL.length);  // Output: 1
+    }
+}
+```
+
+### **Expected Output:**
+```
+Head: 7
+Tail: 7
+Length: 1
+```
+
+### **Important Takeaways for Interviews**
+✅ **DLL is useful when frequent insertions/deletions occur at both ends** (e.g., LRU Cache, Undo/Redo operations).  
+✅ **Trade-off:** DLL consumes extra memory due to the `prev` pointer.  
+✅ **Basic operations remain similar to SLL but require additional handling of `prev` pointers** during insertions & deletions.
+
+---
+
+### **Next Steps for Interview Prep:**
+- Implement and practice **Insertion, Deletion, Traversal** operations in DLL.
+- Understand when to use **DLL vs. SLL** in real-world scenarios.
+- Be ready to discuss **time complexities** for various operations:
+  - **Insertion at Head/Tail**: O(1)
+  - **Deletion at Head/Tail**: O(1)
+  - **Traversal**: O(n)
+  - **Search**: O(n)
+
+---
+
+This note serves as a **quick revision guide** before interviews. Make sure to write and test DLL operations in code for better recall!
+
